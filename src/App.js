@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import ArrayState from './components/ArrayState';
+import BasicState from './components/BasicState';
+import Counter from './components/Counter';
+import ObjectState from './components/ObjectState';
+import Parent from './components/Parent';
+import MonthlyActTrack from "./components/MonthlyActTrack"
+
+const components = ["basic", "object", "array", "parent", "counter", "MonthlyActTrack"];
+
 
 function App() {
+  const [selected, setSelected] = useState("MonthlyActTrack");
+
+  function nextComponent() {
+    const currentIndex = components.indexOf(selected);
+    const nextIndex = currentIndex === components.length - 1 ? 0 : currentIndex + 1;
+
+    const nextComponent = components[nextIndex];
+    setSelected(nextComponent);
+
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+    <button onClick={nextComponent}>Nästa</button>
+
+    {selected === "MonthlyActTrack" ? <MonthlyActTrack /> : null}
+    {selected === "basic" ? <BasicState /> : null}
+    {selected === "object" ? <ObjectState /> : null}
+    {selected === "array" ? <ArrayState /> : null}
+    {selected === "parent" ? <Parent /> : null}
+    {selected === "counter" ? <Counter /> : null}
+  
+   {/* <Parent />
+   <Counter />
+   <ArrayState />
+   <BasicState />
+   <ObjectState /> */}
+
+
+    </>
   );
 }
 

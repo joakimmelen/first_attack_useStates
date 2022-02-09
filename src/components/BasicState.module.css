@@ -1,0 +1,14 @@
+.button {
+  color: red;
+  font-size: 2rem;
+  padding: 10px 50px;
+  background-color: black;
+  border: 1px solid transparent;
+  border-radius: 20px;
+}
+
+.button:active {
+  color: blue;
+  padding: 9px 49px;
+  background-color: rgb(38, 36, 36);
+}
